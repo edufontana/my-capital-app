@@ -22,3 +22,6 @@ export const TitleText = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: 20px;
 `
+export const Text = styled.Text`
+  color: white;
+`

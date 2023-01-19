@@ -13,3 +13,15 @@ export const Content = styled.View`
 export const Text = styled.Text`
   color: white;
 `
+export const TitleView = styled.View`
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const TitleText = styled.Text`
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: 20px;
+`

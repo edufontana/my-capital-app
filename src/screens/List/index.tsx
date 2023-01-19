@@ -1,17 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { Container, Text, Content } from './styles'
+import { Container, Text, Content, TitleText, TitleView } from './styles'
 import { Card } from '@components/Card'
 
 export function List() {
-  const { transactions } = useContext(TransactionsContext)
+  const { transactions, dates } = useContext(TransactionsContext)
 
-  console.log(transactions)
+  useEffect(() => {
+    transactions.sort(function (a, b) {
+      if (parseInt(a.newDateString) < parseInt(b.newDateString)) {
+        return -1
+      } else {
+        return true
+      }
+    })
+
+    console.log('esse', transactions)
+
+    console.log(dates)
+  }, [transactions])
 
   return (
     <Container>
       <Content>
+        <TitleView>
+          <TitleText>Listagem</TitleText>
+        </TitleView>
+
         <FlatList
           data={transactions}
           keyExtractor={(item) => item.id}
