@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { FlatList } from 'react-native'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { Container, Text, Content } from './styles'
+import { Card } from '@components/Card'
 
 export function List() {
   const { transactions } = useContext(TransactionsContext)
@@ -14,9 +15,15 @@ export function List() {
         <FlatList
           data={transactions}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Text>{item.id}</Text>}
+          renderItem={({ item }) => (
+            <Card
+              code={item.code}
+              date={item.date}
+              price={item.price}
+              name={item.name}
+            />
+          )}
         />
-        <Text>bb</Text>
       </Content>
     </Container>
   )
