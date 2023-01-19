@@ -1,8 +1,8 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { Register } from '../screens/Register'
-import { List } from '../screens/List'
+import { Register } from '@screens/Register'
+import { List } from '@screens/List'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
