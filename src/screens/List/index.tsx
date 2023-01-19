@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { Container, Text, Content, TitleText, TitleView } from './styles'
+import { Container, Content, TitleText, TitleView, ViewInput } from './styles'
 import { Card } from '@components/Card'
+import { Input } from '@components/Input'
 
 export function List() {
   const { transactions, dates } = useContext(TransactionsContext)
+  const [listFilter, setListFilter] = useState(transactions)
+  const [searchFilter, setSearchFilter] = useState('')
 
   useEffect(() => {
     transactions.sort(function (a, b) {
@@ -21,6 +24,21 @@ export function List() {
     console.log(dates)
   }, [transactions])
 
+  useEffect(() => {
+    if (searchFilter === '') {
+      console.log('ASIFSHADUSAD')
+      setListFilter(transactions)
+    } else {
+      setListFilter(
+        transactions.filter(
+          (item) =>
+            item.name.toLowerCase().indexOf(searchFilter.toLocaleLowerCase()) >
+            -1,
+        ),
+      )
+    }
+  }, [searchFilter])
+
   return (
     <Container>
       <Content>
@@ -28,8 +46,14 @@ export function List() {
           <TitleText>Listagem</TitleText>
         </TitleView>
 
+        <ViewInput>
+          <Input
+            placeholder="pesquise por nome"
+            onChangeText={(t) => setSearchFilter(t)}
+          />
+        </ViewInput>
         <FlatList
-          data={transactions}
+          data={listFilter}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Card

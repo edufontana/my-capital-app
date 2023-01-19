@@ -25,3 +25,7 @@ export const TitleText = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: 20px;
 `
+
+export const ViewInput = styled.View`
+  margin-bottom: 20px;
+`
