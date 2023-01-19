@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppRoutes } from '@routes/app.routes'
 import theme from '@theme/index'
+import { TransactionsProvider } from './src/contexts/TransactionsContext'
 
 export default function App() {
   return (
@@ -17,7 +18,9 @@ export default function App() {
       />
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
-          <AppRoutes />
+          <TransactionsProvider>
+            <AppRoutes />
+          </TransactionsProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </NavigationContainer>

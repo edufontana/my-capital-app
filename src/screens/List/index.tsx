@@ -1,10 +1,23 @@
-import React from 'react'
-import { Container, Text } from './styles'
+import React, { useContext } from 'react'
+import { FlatList } from 'react-native'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { Container, Text, Content } from './styles'
 
 export function List() {
+  const { transactions } = useContext(TransactionsContext)
+
+  console.log(transactions)
+
   return (
     <Container>
-      <Text>bb</Text>
+      <Content>
+        <FlatList
+          data={transactions}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <Text>{item.id}</Text>}
+        />
+        <Text>bb</Text>
+      </Content>
     </Container>
   )
 }
