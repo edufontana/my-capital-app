@@ -1,4 +1,5 @@
 import React from 'react'
+import { MaterialIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Register } from '@screens/Register'
@@ -14,8 +15,28 @@ export function AppRoutes() {
         tabBarActiveTintColor: '#ff6b06',
       }}
     >
-      <Screen name="Register" component={Register} />
-      <Screen name="List" component={List} />
+      <Screen
+        name="Register"
+        component={Register}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons name="attach-money" size={size} color={color} />
+          ),
+        }}
+      />
+      <Screen
+        name="List"
+        component={List}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons
+              name="format-list-bulleted"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Navigator>
   )
 }

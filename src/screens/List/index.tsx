@@ -37,7 +37,7 @@ export function List() {
         ),
       )
     }
-  }, [searchFilter])
+  }, [searchFilter, transactions])
 
   return (
     <Container>
