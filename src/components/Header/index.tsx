@@ -1,11 +1,13 @@
 import React from 'react'
-import { Container, Logo } from './styles'
-import myCapitalLogo from '@assets/logo.png'
+import { Container, Logo, ViewLogo } from './styles'
+import myCapitalLogo from '../../../assets/logo.png'
 
 export function Header() {
   return (
     <Container>
-      <Logo source={myCapitalLogo} />
+      <ViewLogo>
+        <Logo source={myCapitalLogo} />
+      </ViewLogo>
     </Container>
   )
 }

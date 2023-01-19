@@ -1,10 +1,11 @@
+import { Header } from '@components/Header'
 import React from 'react'
-import { Container, Text } from './styles'
+import { Container } from './styles'
 
 export function Register() {
   return (
     <Container>
-      <Text>aa</Text>
+      <Header />
     </Container>
   )
 }
