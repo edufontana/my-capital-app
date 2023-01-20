@@ -37,12 +37,6 @@ $ yarn start
 $ yarn android
 ```
 
-# Feedback
-
-Eduardo Fontana
-
-Would you like to speak with me? I find myself on Linkedin:  https://www.linkedin.com/in/eduardokilipper/
-
 
 
 
