@@ -25,16 +25,16 @@ The application consists of a screen that adds a code, name, date, value and ano
 ```
 $ yarn install 
 
-Ou
+Or
 
 $ npm install
 ```
-- Dar o build no aplicativo iOS ou Android:
+Start App
 
 ```
-$ react-native run-android
+$ yarn start
 
-$ react-native run-ios 
+$ yarn android
 ```
 
 # Feedback
