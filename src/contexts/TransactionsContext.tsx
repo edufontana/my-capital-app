@@ -63,7 +63,6 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         } else {
           setTrasactions(JSON.parse(data))
         }
-        console.log(JSON.parse(data))
       } catch (err) {}
     }
 
@@ -89,7 +88,6 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     if (code === '' || date === '' || name === '' || price === '') {
       return Alert.alert('Preencha todos os campos')
     }
-    console.log('FSAFDFSDF', dates)
 
     const formatDate = date
     const formatDate2 = formatDate.split('-')
@@ -121,7 +119,6 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
 
     try {
-      console.log('salovuuuuu')
       const response = await AsyncStorage.getItem('@myCapital-transactions')
 
       const currentData = response ? JSON.parse(response) : []

@@ -8,10 +8,10 @@ import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 export function Register() {
   const { handleAddNewStock } = useContext(TransactionsContext)
-  const [code, setCode] = useState('aaa')
-  const [name, setName] = useState('bbb')
-  const [date, setDate] = useState('02-01-2023')
-  const [price, setPrice] = useState('39')
+  const [code, setCode] = useState('')
+  const [name, setName] = useState('')
+  const [date, setDate] = useState('01-01-2023')
+  const [price, setPrice] = useState('')
 
   return (
     <Container>
