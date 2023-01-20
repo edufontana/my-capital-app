@@ -13,7 +13,7 @@ export const Content = styled.View`
 
 export const TitleView = styled.View`
   width: 100%;
-
+  margin-top: 10px;
   justify-content: center;
   align-items: center;
 `

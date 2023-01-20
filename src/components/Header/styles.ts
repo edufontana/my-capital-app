@@ -8,9 +8,7 @@ export const Container = styled.View`
   height: 20%;
 `
 
-export const ViewLogo = styled.View`
-  margin-top: 20px;
-`
+export const ViewLogo = styled.View``
 
 export const Logo = styled.Image`
   width: 242px;

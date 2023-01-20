@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Text } from './styles'
+import { currencyFormat } from '../../utils/currencyBRL'
 
 type Props = {
   code: string
@@ -14,7 +15,7 @@ export function Card({ code, date, name, price }: Props) {
       <Text>{code}</Text>
       <Text>{name}</Text>
       <Text>{date}</Text>
-      <Text>{price}</Text>
+      <Text>{currencyFormat(parseInt(price))}</Text>
     </Container>
   )
 }

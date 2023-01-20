@@ -21,7 +21,7 @@ export function List() {
 
     console.log('esse', transactions)
 
-    console.log(dates)
+    console.log('caiu aquii no null', dates)
   }, [transactions])
 
   useEffect(() => {

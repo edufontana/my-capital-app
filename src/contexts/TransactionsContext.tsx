@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { Alert } from 'react-native'
 import uuid from 'react-native-uuid'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type DateProps = {
   date: string
@@ -52,6 +53,23 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     handleDates()
   }, [])
 
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await AsyncStorage.getItem('@myCapital-transactions')
+
+        if (data === null) {
+          setTrasactions(transactions)
+        } else {
+          setTrasactions(JSON.parse(data))
+        }
+        console.log(JSON.parse(data))
+      } catch (err) {}
+    }
+
+    loadData()
+  }, [])
+
   async function fetchGetDate() {
     const dataAtual = new Date()
     const anoAtual = dataAtual.getFullYear()
@@ -67,20 +85,20 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
   }
 
-  function handleAddNewStock({ code, date, name, price }: CreateStock) {
-    console.log(dates)
+  async function handleAddNewStock({ code, date, name, price }: CreateStock) {
+    if (code === '' || date === '' || name === '' || price === '') {
+      return Alert.alert('Preencha todos os campos')
+    }
+    console.log('FSAFDFSDF', dates)
 
     const formatDate = date
     const formatDate2 = formatDate.split('-')
 
     const newDate = new Date(formatDate2[0], formatDate2[1] - 1, formatDate2[2])
-    console.log('data formatada', newDate.getTime())
 
     const newDateString = newDate.toISOString()
 
     const feriado = dates.filter((item) => {
-      console.log('DASDASD', uuid.v4().toString())
-
       if (
         item.date === `${formatDate2[2]}-${formatDate2[1]}-${formatDate2[0]}`
       ) {
@@ -91,6 +109,31 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
     if (feriado.length > 0) {
       return Alert.alert('essa data é um feriado!')
+    }
+
+    const data = {
+      id: uuid.v4().toString(),
+      code,
+      name,
+      date,
+      price,
+      newDateString,
+    }
+
+    try {
+      console.log('salovuuuuu')
+      const response = await AsyncStorage.getItem('@myCapital-transactions')
+
+      const currentData = response ? JSON.parse(response) : []
+
+      const dataFormated = [...currentData, data]
+
+      await AsyncStorage.setItem(
+        '@myCapital-transactions',
+        JSON.stringify(dataFormated),
+      )
+    } catch (err) {
+      Alert.alert(err)
     }
 
     setTrasactions((state) => [
